@@ -18,7 +18,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -26,6 +25,8 @@ class LoginController extends Controller
      *
      * @var string
      */
+    protected $maxAttempts = 5;
+    protected $decayMinutes = 1;
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
