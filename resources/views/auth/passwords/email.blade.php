@@ -1,11 +1,9 @@
 @extends('app')
 
-@section('title','パスワード再設定')
-
+@section('title', 'パスワード再設定')
 
 @section('content')
-
-<div class="container">
+  <div class="container">
     <div class="row">
       <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
         <h1 class="text-center"><a class="text-dark" href="/">memo</a></h1>
