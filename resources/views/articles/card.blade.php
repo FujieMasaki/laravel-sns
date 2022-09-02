@@ -7,7 +7,6 @@
       </div>
 
     @if( Auth::id() === $article->user_id )
-      <!-- dropdown -->
         <div class="ml-auto card-text">
           <div class="dropdown">
             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +48,6 @@
             </div>
           </div>
         </div>
-        <!-- modal -->
       @endif
 
     </div>
@@ -65,7 +63,11 @@
     </div>
     <div class="card-body pt-0 pb-2 pl-3">
       <div class="card-text">
-        <article-like>
+        <article-like :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
+          :initial-count-likes='@json($article->count_likes)'
+          :authorized='@json(Auth::check())'
+        endpoint="{{ route('articles.like', ['article' => $article]) }}"
+          >
         </article-like>
       </div>
     </div>
