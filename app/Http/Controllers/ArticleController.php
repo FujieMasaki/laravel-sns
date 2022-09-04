@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Http\Requests\ArticleRequest;
+use App\Tag;
 
 class ArticleController extends Controller
 {
@@ -30,6 +31,11 @@ class ArticleController extends Controller
         $article->user_id = $request->user()->id;
         $article->save();
         return redirect()->route('articles.index');
+
+        $request->tags->each(function ($tagName) use ($article) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $article->tags()->attach($tag);
+        });
     }
 
     public function edit(Article $article)
